@@ -10,4 +10,4 @@ title: Welcome to Chereny's Tech Blog
 - Data Science
 - Design
 
-[[첫-번째-포스트 | 첫 번째 포스트 보기]]
+[[Obsidian으로 GitHub Blog 만들기| 첫 번째 포스트 보기]]

@@ -66,3 +66,31 @@ export const defaultListPageLayout: PageLayout = {
   ],
   right: [],
 }
+
+import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
+
+const Comments: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
+  return (
+    <div class={`giscus ${displayClass ?? ""}`}>
+      <script
+        src="https://giscus.app/client.js"
+        data-repo="chereny/chereny.github.io"
+        data-repo-id="YOUR_REPO_ID"
+        data-category="General"
+        data-category-id="YOUR_CATEGORY_ID"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="ko"
+        crossorigin="anonymous"
+        async
+      ></script>
+    </div>
+  )
+}
+
+Comments.displayName = "Comments"
+export default (() => Comments) satisfies QuartzComponentConstructor
