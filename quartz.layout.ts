@@ -78,15 +78,16 @@ export const defaultContentPageLayout: PageLayout = {
         provider: "giscus",
         options: {
           repo: "chereny/chereny.github.io",
-          repoId: "YOUR_REPO_ID",
+          repoId: "R_kgDOPErJ5w",                    // 실제 값으로 변경
           category: "General",
-          categoryId: "YOUR_CATEGORY_ID",
+          categoryId: "DIC_kwDOPErJ584CsTQn",        // 실제 값으로 변경
           mapping: "pathname",
           strict: false,
           reactionsEnabled: true,
-          inputPosition: "bottom",
-          lang: "ko"
-        }
+          inputPosition: "top",                      // "bottom"에서 "top"으로 변경
+          lang: "ko",
+          lightTheme: "noborder_light",              // 테마 추가
+          darkTheme: "noborder_dark"          }
       }),
       condition: (page) => page.fileData.slug !== "index",
     })
