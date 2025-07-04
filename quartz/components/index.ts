@@ -11,8 +11,6 @@ import Comments from "./Comments"
 // @ts-ignore
 import ConditionalRender from "./ConditionalRender"
 // @ts-ignore
-import Content from "./Content"
-// @ts-ignore
 import ContentMeta from "./ContentMeta"
 // @ts-ignore
 import Darkmode from "./Darkmode"
@@ -23,8 +21,6 @@ import Explorer from "./Explorer"
 // @ts-ignore
 import Flex from "./Flex"
 // @ts-ignore
-import FolderContent from "./FolderContent"
-// @ts-ignore
 import Footer from "./Footer"
 // @ts-ignore
 import Graph from "./Graph"
@@ -33,8 +29,6 @@ import Head from "./Head"
 // @ts-ignore
 import MobileOnly from "./MobileOnly"
 // @ts-ignore
-import NotFound from "./NotFound"
-// @ts-ignore
 import PageTitle from "./PageTitle"
 // @ts-ignore
 import ReaderMode from "./ReaderMode"
@@ -42,8 +36,6 @@ import ReaderMode from "./ReaderMode"
 import Search from "./Search"
 // @ts-ignore
 import Spacer from "./Spacer"
-// @ts-ignore
-import TagContent from "./TagContent"
 // @ts-ignore
 import TagList from "./TagList"
 // @ts-ignore
@@ -55,23 +47,22 @@ export {
   Breadcrumbs,
   Comments,
   ConditionalRender,
-  Content,
   ContentMeta,
   Darkmode,
   DesktopOnly,
   Explorer,
   Flex,
-  FolderContent,
   Footer,
   Graph,
   Head,
   MobileOnly,
-  NotFound,
   PageTitle,
   ReaderMode,
   Search,
   Spacer,
-  TagContent,
   TagList,
   TableOfContents,
 }
+
+// 존재하지 않는 컴포넌트들은 다른 곳에서 import해야 할 수 있습니다
+// Content, FolderContent, NotFound, TagContent는 아마 다른 경로에 있을 것입니다
