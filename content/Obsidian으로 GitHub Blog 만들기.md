@@ -4,12 +4,15 @@
 
 ### GitHub 
 0. 너무 기본적이지만 계정 만들기/로그인을 해야 한다.
-1. 블로그용 저장소를 생성한다.
-   ![[Pasted image 20250704141610.png]]
-   저장소 이름은 `username.github.io` 로 대부분 이름짓는 것 같다. 
-   또한 생성하기 전에 README를 체크를 잊지 않도록 한다!
-2. Pages 세팅
-   ![[Pasted image 20250704143248.png]]
+   
+1. Quartz를 복제한다.
+   [template 링크](https://github.com/jackyzha0/quartz)
+   ![[Pasted image 20250704170930.png]]
+   Include all branches는 체크하지말고 이름만 짓고 생성하면 된다.
+   cf. 저장소 이름은 `username.github.io` 로 대부분 이름짓는 것 같다.
+
+2. Pages를 활성화한다.
+   
 
 ### Obsidian
 1. 옵시디언을 설치한다
@@ -24,3 +27,28 @@
 	 설치만 하면 되는 게 아니고 Enable을 해야한다.
 	 ![[Pasted image 20250704140418.png]]
 	 설정에서 10분마다 자동으로 Commit하게 할 수도 있다.
+
+
+
+# 2. 연동
+### ㅇㅇ
+
+
+### Node.js
+1. 설치하기
+   [Node.js 링크](https://nodejs.org/en)
+
+
+1단계: GitHub Discussions 활성화
+
+1. **GitHub 저장소** → **Settings**
+2. **Features** 섹션에서 **"Discussions"** 체크
+3. **Set up discussions** 클릭
+
+### 2단계: Giscus 설정
+
+1. [giscus.app](https://giscus.app) 방문
+2. **저장소**: `chereny/chereny.github.io` 입력
+3. **페이지 ↔ discussions 매핑**: "pathname" 선택
+4. **Discussion 카테고리**: "General" 선택
+5. **테마**: "preferred_color_scheme" (자동 다크모드)
