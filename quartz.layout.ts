@@ -7,11 +7,11 @@ export const sharedPageComponents: SharedLayout = {
   header: [],
   afterBody: [],
   footer: Component.Footer({
-    links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
-    },
-  }),
+  links: {
+    GitHub: "https://github.com/chereny/chereny.github.io",
+    Blog: "https://chereny.github.io",
+  },
+}),
 }
 
 // components for pages that display a single page (e.g. a single note)
@@ -45,6 +45,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
+  afterBody: [Component.Comments()],
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
