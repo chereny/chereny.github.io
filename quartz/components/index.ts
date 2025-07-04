@@ -51,5 +51,3 @@ export {
   Flex,
   ConditionalRender,
 }
-
-export { default as Comments } from "./Comments"

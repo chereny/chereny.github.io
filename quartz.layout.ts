@@ -72,7 +72,7 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 
 const Comments: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
   return (
-    <div class={`giscus ${displayClass ?? ""}`}>
+    <div className={`giscus ${displayClass ?? ""}`}>
       <script
         src="https://giscus.app/client.js"
         data-repo="chereny/chereny.github.io"
