@@ -7,11 +7,11 @@ export const sharedPageComponents: SharedLayout = {
   header: [],
   afterBody: [],
   footer: Component.Footer({
-  links: {
-    GitHub: "https://github.com/chereny/chereny.github.io",
-    Blog: "https://chereny.github.io",
-  },
-}),
+    links: {
+      GitHub: "https://github.com/chereny/chereny.github.io",
+      Blog: "https://chereny.github.io",
+    },
+  }),
 }
 
 // components for pages that display a single page (e.g. a single note)
@@ -45,7 +45,22 @@ export const defaultContentPageLayout: PageLayout = {
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
-  afterBody: [Component.Comments()],
+  afterBody: [
+    Component.Comments({
+      provider: "giscus",
+      options: {
+        repo: "chereny/chereny.github.io",
+        repoId: "YOUR_REPO_ID", // 실제 repo ID로 변경 필요
+        category: "General",
+        categoryId: "YOUR_CATEGORY_ID", // 실제 category ID로 변경 필요
+        mapping: "pathname",
+        strict: false,
+        reactionsEnabled: true,
+        inputPosition: "bottom",
+        lang: "ko"
+      }
+    })
+  ],
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
@@ -67,31 +82,3 @@ export const defaultListPageLayout: PageLayout = {
   ],
   right: [],
 }
-
-import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
-
-const Comments: QuartzComponent = ({ displayClass }: QuartzComponentProps) => {
-  return (
-    <div className={`giscus ${displayClass ?? ""}`}>
-      <script
-        src="https://giscus.app/client.js"
-        data-repo="chereny/chereny.github.io"
-        data-repo-id="YOUR_REPO_ID"
-        data-category="General"
-        data-category-id="YOUR_CATEGORY_ID"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="ko"
-        crossorigin="anonymous"
-        async
-      ></script>
-    </div>
-  )
-}
-
-Comments.displayName = "Comments"
-export default (() => Comments) satisfies QuartzComponentConstructor

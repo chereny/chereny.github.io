@@ -1,53 +1,53 @@
-import Content from "./pages/Content"
-import TagContent from "./pages/TagContent"
-import FolderContent from "./pages/FolderContent"
-import NotFound from "./pages/404"
+import { QuartzComponent } from "./types"
+
+// @ts-ignore
 import ArticleTitle from "./ArticleTitle"
-import Darkmode from "./Darkmode"
-import ReaderMode from "./ReaderMode"
-import Head from "./Head"
-import PageTitle from "./PageTitle"
-import ContentMeta from "./ContentMeta"
-import Spacer from "./Spacer"
-import TableOfContents from "./TableOfContents"
-import Explorer from "./Explorer"
-import TagList from "./TagList"
-import Graph from "./Graph"
-import Backlinks from "./Backlinks"
-import Search from "./Search"
-import Footer from "./Footer"
-import DesktopOnly from "./DesktopOnly"
-import MobileOnly from "./MobileOnly"
-import RecentNotes from "./RecentNotes"
+// @ts-ignore
 import Breadcrumbs from "./Breadcrumbs"
+// @ts-ignore
+import ContentMeta from "./ContentMeta"
+// @ts-ignore
+import Darkmode from "./Darkmode"
+// @ts-ignore
+import Explorer from "./Explorer"
+// @ts-ignore
+import Footer from "./Footer"
+// @ts-ignore
+import Graph from "./Graph"
+// @ts-ignore
+import Head from "./Head"
+// @ts-ignore
+import PageTitle from "./PageTitle"
+// @ts-ignore
+import ReaderMode from "./ReaderMode"
+// @ts-ignore
+import Search from "./Search"
+// @ts-ignore
+import TagList from "./TagList"
+// @ts-ignore
+import TableOfContents from "./TableOfContents"
+// @ts-ignore
+import Backlinks from "./Backlinks"
+// @ts-ignore
 import Comments from "./Comments"
-import Flex from "./Flex"
-import ConditionalRender from "./ConditionalRender"
 
 export {
   ArticleTitle,
-  Content,
-  TagContent,
-  FolderContent,
+  Breadcrumbs,
+  ContentMeta,
   Darkmode,
-  ReaderMode,
+  Explorer,
+  Footer,
+  Graph,
   Head,
   PageTitle,
-  ContentMeta,
-  Spacer,
-  TableOfContents,
-  Explorer,
-  TagList,
-  Graph,
-  Backlinks,
+  ReaderMode,
   Search,
-  Footer,
-  DesktopOnly,
-  MobileOnly,
-  RecentNotes,
-  NotFound,
-  Breadcrumbs,
+  TagList,
+  TableOfContents,
+  Backlinks,
   Comments,
-  Flex,
-  ConditionalRender,
 }
+
+// 여기서 중복 export 제거 - Comments는 위에서 이미 export했으므로 아래 줄은 삭제
+// export { default as Comments } from "./Comments"  // 이 줄 삭제

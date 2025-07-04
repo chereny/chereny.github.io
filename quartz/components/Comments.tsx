@@ -34,7 +34,6 @@ export default ((opts: Options) => {
     if (disableComment) {
       return <></>
     }
-
     return (
       <div
         class={classNames(displayClass, "giscus")}
@@ -55,8 +54,6 @@ export default ((opts: Options) => {
       ></div>
     )
   }
-
   Comments.afterDOMLoaded = script
-
   return Comments
 }) satisfies QuartzComponentConstructor<Options>
