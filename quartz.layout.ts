@@ -45,20 +45,24 @@ export const defaultContentPageLayout: PageLayout = {
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
+  // 홈 화면이 아닌 경우에만 댓글 표시
   afterBody: [
-    Component.Comments({
-      provider: "giscus",
-      options: {
-        repo: "chereny/chereny.github.io",
-        repoId: "YOUR_REPO_ID", // 실제 repo ID로 변경 필요
-        category: "General",
-        categoryId: "YOUR_CATEGORY_ID", // 실제 category ID로 변경 필요
-        mapping: "pathname",
-        strict: false,
-        reactionsEnabled: true,
-        inputPosition: "bottom",
-        lang: "ko"
-      }
+    Component.ConditionalRender({
+      component: Component.Comments({
+        provider: "giscus",
+        options: {
+          repo: "chereny/chereny.github.io",
+          repoId: "YOUR_REPO_ID", // 실제 repo ID로 변경 필요
+          category: "General",
+          categoryId: "YOUR_CATEGORY_ID", // 실제 category ID로 변경 필요
+          mapping: "pathname",
+          strict: false,
+          reactionsEnabled: true,
+          inputPosition: "bottom",
+          lang: "ko"
+        }
+      }),
+      condition: (page) => page.fileData.slug !== "index", // 홈 화면이 아닐 때만 댓글 표시
     })
   ],
 }
