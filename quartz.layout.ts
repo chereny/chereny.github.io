@@ -38,23 +38,49 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    // 탐색기 개선 옵션들
+    Component.Explorer({
+      title: "📁 블로그 탐색",
+      folderClickBehavior: "collapse", // 폴더 클릭 시 접기/펼치기
+      folderDefaultState: "collapsed", // 기본적으로 폴더 접혀있음
+      useSavedState: true, // 사용자의 폴더 상태 기억
+      mapFn: (node) => {
+        // 파일명에서 날짜 제거하고 카테고리별 그룹핑
+        if (node.file) {
+          node.displayName = node.file.frontmatter?.title || node.displayName
+        }
+        return node
+      },
+      filterFn: (node) => {
+        // draft 파일들 숨기기
+        if (node.file?.frontmatter?.draft) return false
+        return true
+      },
+      order: ["filter", "map", "sort"] // 정렬 순서
+    }),
   ],
   right: [
     Component.Graph(),
-    Component.DesktopOnly(Component.TableOfContents()),
+    // 목차 개선
+    Component.DesktopOnly(
+      Component.TableOfContents({
+        maxDepth: 4, // 최대 4단계까지
+        minEntries: 1, // 최소 1개 항목부터 표시
+        showByDefault: true, // 기본적으로 표시
+        collapseByDefault: false // 기본적으로 펼쳐진 상태
+      })
+    ),
     Component.Backlinks(),
   ],
-  // 홈 화면이 아닌 경우에만 댓글 표시
   afterBody: [
     Component.ConditionalRender({
       component: Component.Comments({
         provider: "giscus",
         options: {
           repo: "chereny/chereny.github.io",
-          repoId: "YOUR_REPO_ID", // 실제 repo ID로 변경 필요
+          repoId: "YOUR_REPO_ID",
           category: "General",
-          categoryId: "YOUR_CATEGORY_ID", // 실제 category ID로 변경 필요
+          categoryId: "YOUR_CATEGORY_ID",
           mapping: "pathname",
           strict: false,
           reactionsEnabled: true,
@@ -62,12 +88,12 @@ export const defaultContentPageLayout: PageLayout = {
           lang: "ko"
         }
       }),
-      condition: (page) => page.fileData.slug !== "index", // 홈 화면이 아닐 때만 댓글 표시
+      condition: (page) => page.fileData.slug !== "index",
     })
   ],
 }
 
-// components for pages that display lists of pages  (e.g. tags or folders)
+// components for pages that display lists of pages (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
   beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
   left: [
@@ -82,7 +108,12 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      title: "📁 블로그 탐색",
+      folderClickBehavior: "collapse",
+      folderDefaultState: "collapsed",
+      useSavedState: true,
+    }),
   ],
   right: [],
 }
