@@ -71,12 +71,22 @@
 	 이런 식으로 글을 넣으면 된다. Ctrl S 눌러서 저장하는 것을 잊지 말자.
 	
 	
+4. 저장한 내용 반영하기
+   ```
+   # 변경사항 스테이징
+   git add . 
+   
+   # 커밋
+   git commit -m "수정사항(ex. Add index.md content)"
+   
+   # GitHub에 푸시
+   git push origin v4
+   ```
 	
 	
-	
-	3. **GitHub 저장소** → **Settings**
-4. **Features** 섹션에서 **"Discussions"** 체크
-5. **Set up discussions** 클릭
+	5. **GitHub 저장소** → **Settings**
+5. **Features** 섹션에서 **"Discussions"** 체크
+6. **Set up discussions** 클릭
 
 
 ### 2단계: Giscus 설정
