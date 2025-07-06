@@ -12,7 +12,8 @@
    cf. 저장소 이름은 `username.github.io` 로 대부분 이름짓는 것 같다.
 
 2. Pages를 활성화한다.
-   
+   ![[Pasted image 20250704175341.png]]
+   GitHub Actions로 바꾼다.
 
 ### Obsidian
 1. 옵시디언을 설치한다
@@ -32,7 +33,6 @@
 
 # 2. 연동
 ### ㅇㅇ
-
 
 ### Node.js
 1. 설치하기
