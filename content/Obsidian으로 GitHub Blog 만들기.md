@@ -3,16 +3,17 @@
 # 1. 기본 세팅
 
 ### GitHub 
-0. 너무 기본적이지만 계정 만들기/로그인을 해야 한다.
+0. 너무 기본적이지만 **계정 만들기/로그인**을 해야 한다.
+   이정도는 너무 쉬우니까 설명은 생략한다.
    
-1. Quartz를 복제한다.
+1. **Quartz**를 복제한다.
    
    [template 링크](https://github.com/jackyzha0/quartz)
    ![[Pasted image 20250704170930.png]]
    Include all branches는 체크하지말고 이름만 짓고 생성하면 된다.
    cf. 저장소 이름은 `username.github.io` 로 대부분 이름짓는 것 같다.
 
-3. Pages를 활성화한다.
+2. **Pages**를 활성화한다.
    ![[Pasted image 20250704175341.png]]
    GitHub Actions로 바꾼다.
 
@@ -23,12 +24,13 @@
 
 # 2. 연동
 ### 깃헙
-1. clone
+1. **clone**
    앞으로의 코드는 cmd에서 다 이루어진다. 
     ```
    git clone https://github.com/username/저장소이름.git 
    cd 저장소이름
    ```
+
 
 2. 초기 설정
    ``` 
@@ -42,6 +44,7 @@
 	- **"Choose how to initialize the content in your new vault"** → "Empty Quartz"
 	- **"Choose how you'd like to set this up"** → "Treat links as shortest path"
 
+
 3.  블로그 생성
 	 ``` 
 	# content 폴더 확인
@@ -50,10 +53,11 @@
 	# 첫 번째 노트 작성
 	notepad content\index.md
 	 ```
-    이 코드를 치면 메모장이 뜨는데 여기에 있는 글들을 지우고 ![[Pasted image 20250706133341.png]]
-
+    이 코드를 치면 메모장이 뜨는데 여기에 있는 글들을 지우고 
+    ![[Pasted image 20250706133341.png]]
+    
 	 이런 식으로 글을 넣으면 된다. Ctrl S 눌러서 저장하는 것을 잊지 말자.
-	
+
 	
 4. 저장한 내용 반영하기
    ```
@@ -67,13 +71,16 @@
    git push origin v4
    ```
 
+
 5.   사용자 정보 입력
-	사실 위의 과정만 했다면 제대로 되지 않았을 것이다.  내 이름과 이메일을 입력해두지 않았다면 제대로 실행되지 못하기 때문에 아래의 코드를 입력해준다.
+	사실 위의 과정만 했다면 제대로 되지 않았을 것이다. 
+	이름과 이메일을 입력해두지 않았다면 제대로 실행되지 못하기 때문에 아래의 코드를 입력해준다. 
 	참고로 4번의 내용은 변경사항이 있을 때마다 사용해야하니 기억해두도록 하자.
-``` 
-   git config --global user.name "여기에 이름 넣기"
-   git config --global user.email "여기에 이메일 넣기"
- ```
+	```
+	git config --global user.name "여기에 이름 넣기"
+	git config --global user.email "여기에 이메일 넣기"
+	```
+
 
 6. workflows 생성
    ```
@@ -86,6 +93,7 @@
 	notepad .github\workflows\deploy.yml
 	```
 	생성된 메모장에는 다음 내용을 넣도록 한다.
+	
 	```
 	name: Deploy Quartz site to GitHub Pages
 	
@@ -138,7 +146,7 @@
 	![[Pasted image 20250706215741.png]]
 	이전에는 빨간색 X 표시가 뜨며 실패하거나 스킵을 의미하는 회색 사선 아이콘이 떴는데 이제 초록색 체크가 뜨면서 성공적으로 배포했다.
 	
-	![[Pasted image 20250706215828.png]]
+	![[Pasted image 20250706232945.png]]
 	설정의 Pages에도 이전에 없던 링크가 생긴 것을 확인할 수 있다.
 	
 	![[Pasted image 20250706215641.png]]
@@ -156,10 +164,6 @@
 	 설치만 하면 되는 게 아니고 Enable을 해야한다.
 	 ![[Pasted image 20250704140418.png]]
 	 설정에서 10분마다 자동으로 Commit하게 할 수도 있다.
-
-
-
-
 
 # 3. 댓글기능 추가
 추가적으로 댓글 기능도 도입할 수 있다. 
