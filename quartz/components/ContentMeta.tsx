@@ -1,20 +1,19 @@
-import { Date, getDate } from "./Date"
-import { QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import readingTime from "reading-time"
 import { classNames } from "../util/lang"
 import { i18n } from "../i18n"
 import { JSX } from "preact"
 import style from "./styles/contentMeta.scss"
+import { QuartzComponentConstructor, QuartzComponentProps } from "./types"
 
 interface ContentMetaOptions {
   showReadingTime: boolean
   showComma: boolean
-  showViews: boolean  // 👈 방문자 수 옵션 추가
+  showViews: boolean
 }
 
 const defaultOptions: ContentMetaOptions = {
   showReadingTime: true,
-  showComma: false,  // 👈 쉼표 비활성화
+  showComma: false,
   showViews: true,
 }
 
@@ -27,27 +26,26 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
       const dateSegments: JSX.Element[] = []
       const metaSegments: JSX.Element[] = []
       
-      // 날짜 정보
+      // 날짜 정보 - Date 컴포넌트 사용 안 함!
       const created = fileData.frontmatter?.created
       const modified = fileData.frontmatter?.modified
       
-      // 날짜 정보 부분을 이렇게 바꾸세요
-     if (created) {
-  	dateSegments.push(
-    	<span class="date-created">
-      	    Created: {new Date(created).toLocaleDateString('ko-KR')}
-    	</span>
-  	)
+      if (created) {
+        dateSegments.push(
+          <span class="date-created">
+            Created: {new Date(created).toLocaleDateString('ko-KR')}
+          </span>
+        )
       }
-
-     if (modified && modified !== created) {
- 	dateSegments.push(
-    	   <span class="date-modified">
-      		Updated: {new Date(modified).toLocaleDateString('ko-KR')}
-    	   </span>
-  	 )
+      
+      if (modified && modified !== created) {
+        dateSegments.push(
+          <span class="date-modified">
+            Updated: {new Date(modified).toLocaleDateString('ko-KR')}
+          </span>
+        )
       }
-             
+      
       // 읽기 시간
       if (options.showReadingTime) {
         const { minutes } = readingTime(text)
@@ -61,7 +59,7 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
         )
       }
       
-      // 방문자 수 (예시 - 실제로는 analytics 연동 필요)
+      // 방문자 수
       if (options.showViews) {
         metaSegments.push(
           <span class="page-views" id={`views-${fileData.slug}`}>
@@ -72,7 +70,6 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
 
       return (
         <div class={classNames(displayClass, "content-meta")}>
-          {/* 날짜 정보 */}
           {dateSegments.length > 0 && (
             <div class="date-info">
               {dateSegments.map((segment, index) => (
@@ -84,7 +81,6 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
             </div>
           )}
           
-          {/* 메타 정보 */}
           {metaSegments.length > 0 && (
             <div class="meta-info">
               {metaSegments.map((segment, index) => (
