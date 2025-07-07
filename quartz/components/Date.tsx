@@ -28,40 +28,38 @@ export function formatDate(d: Date, locale: ValidLocale = "en-US"): string {
 }
 
 export function Date({ date, locale, prefix }: Props) {
-  console.log("Date component received:", date, typeof date)
+  // console.log 제거 (배포 시 불필요)
   
   if (!date) {
     return null
   }
   
+  // 간단하고 안전한 처리
+  let dateObj: Date
+  
   try {
-    let dateObj: Date
-    
-    // 더 엄격한 Date 객체 검증
-    if (date instanceof Date && !isNaN(date.getTime())) {
-      dateObj = date
-    } else if (typeof date === 'string') {
+    if (typeof date === 'string') {
       dateObj = new Date(date)
+    } else if (date instanceof Date) {
+      dateObj = date
     } else {
-      // Date 객체처럼 보이지만 실제로는 아닌 경우
-      console.log("Invalid date format, converting to string first")
+      // 다른 형태면 문자열로 변환 후 Date 생성
       dateObj = new Date(String(date))
     }
     
-    // 최종 검증: getTime 메서드 존재 및 유효성 확인
-    if (!dateObj || typeof dateObj.getTime !== 'function' || isNaN(dateObj.getTime())) {
-      console.log("Final validation failed:", dateObj)
+    // 유효한 날짜인지만 간단히 확인
+    if (isNaN(dateObj.getTime())) {
       return null
     }
     
-    return (
-      <time dateTime={dateObj.toISOString()}>
-        {prefix && <span className="date-prefix">{prefix}</span>}
-        {formatDate(dateObj, locale)}
-      </time>
-    )
-  } catch (error) {
-    console.log("Date conversion error:", error)
+  } catch {
     return null
   }
+  
+  return (
+    <time dateTime={dateObj.toISOString()}>
+      {prefix && <span className="date-prefix">{prefix}</span>}
+      {formatDate(dateObj, locale)}
+    </time>
+  )
 }
