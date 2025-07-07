@@ -8,13 +8,11 @@ import { QuartzComponentConstructor, QuartzComponentProps } from "./types"
 interface ContentMetaOptions {
   showReadingTime: boolean
   showComma: boolean
-  showViews: boolean
 }
 
 const defaultOptions: ContentMetaOptions = {
   showReadingTime: true,
   showComma: false,
-  showViews: true,
 }
 
 export default ((opts?: Partial<ContentMetaOptions>) => {
@@ -54,20 +52,11 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
         })
         metaSegments.push(
           <span class="reading-time">
-            📖 {displayedTime}
+            📖 {Math.ceil(minutes)} min to read
           </span>
         )
       }
       
-      // 방문자 수
-      if (options.showViews) {
-        metaSegments.push(
-          <span class="page-views" id={`views-${fileData.slug}`}>
-            👓 -- views
-          </span>
-        )
-      }
-
       return (
         <div class={classNames(displayClass, "content-meta")}>
           {dateSegments.length > 0 && (
@@ -84,10 +73,7 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
           {metaSegments.length > 0 && (
             <div class="meta-info">
               {metaSegments.map((segment, index) => (
-                <>
-                  {segment}
-                  {index < metaSegments.length - 1 && <span class="dot"> • </span>}
-                </>
+                <>{segment}</>
               ))}
             </div>
           )}
