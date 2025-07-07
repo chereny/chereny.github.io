@@ -28,7 +28,6 @@ export function formatDate(d: Date, locale: ValidLocale = "en-US"): string {
 }
 
 export function Date({ date, locale, prefix }: Props) {
-  // 디버깅: 어떤 값이 들어오는지 확인
   console.log("Date component received:", date, typeof date)
   
   if (!date) {
@@ -38,15 +37,20 @@ export function Date({ date, locale, prefix }: Props) {
   try {
     let dateObj: Date
     
-    if (date instanceof Date) {
+    // 더 엄격한 Date 객체 검증
+    if (date instanceof Date && !isNaN(date.getTime())) {
       dateObj = date
-    } else {
+    } else if (typeof date === 'string') {
       dateObj = new Date(date)
+    } else {
+      // Date 객체처럼 보이지만 실제로는 아닌 경우
+      console.log("Invalid date format, converting to string first")
+      dateObj = new Date(String(date))
     }
     
-    // Date 객체 유효성 재확인
-    if (!dateObj || isNaN(dateObj.getTime())) {
-      console.log("Invalid date object:", dateObj)
+    // 최종 검증: getTime 메서드 존재 및 유효성 확인
+    if (!dateObj || typeof dateObj.getTime !== 'function' || isNaN(dateObj.getTime())) {
+      console.log("Final validation failed:", dateObj)
       return null
     }
     
