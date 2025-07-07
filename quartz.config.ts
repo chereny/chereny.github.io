@@ -29,26 +29,26 @@ const config: QuartzConfig = {
       },
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
-        },
+	  light: "#faf8f8",           // 배경 (기존 유지)
+    	  lightgray: "#e5e5e5",       // 연한 회색 (기존 유지)
+    	  gray: "#b8b8b8",            // 회색 (기존 유지)
+    	  darkgray: "#4e4e4e",        // 텍스트 (기존 유지)
+    	  dark: "#2b2b2b",            // 제목 (기존 유지)
+    	  secondary: "#00462A",        // 메인 컬러! 🎯
+    	  tertiary: "#00663D",        // 호버 (조금 더 밝은 초록)
+    	  highlight: "rgba(0, 70, 42, 0.15)",  // 하이라이트
+    	  textHighlight: "#00462A88",  // 텍스트 하이라이트        
+	},
         darkMode: {
           light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+    	  lightgray: "#393639", 
+    	  gray: "#646464",
+    	  darkgray: "#d4d4d4",
+    	  dark: "#ebebec",
+    	  secondary: "#4CAF50",        // 다크모드용 밝은 초록
+    	  tertiary: "#66BB6A",        // 다크모드 호버
+    	  highlight: "rgba(76, 175, 80, 0.15)",
+    	  textHighlight: "#4CAF5088",
         },
       },
     },
