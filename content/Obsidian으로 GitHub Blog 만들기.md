@@ -1,6 +1,9 @@
 ---
-created: "250706"
-modified: "250707"
+created: 2025-07-06
+modified: 2025-07-07
+tags:
+  - GitHub
+  - Obsidian
 ---
 
 
