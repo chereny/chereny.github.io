@@ -3,7 +3,7 @@ import { ValidLocale } from "../i18n"
 import { QuartzPluginData } from "../plugins/vfile"
 
 interface Props {
-  date: Date
+  date: Date | string | undefined
   locale?: ValidLocale
   prefix?: string
 }
@@ -32,9 +32,11 @@ export function Date({ date, locale, prefix }: Props) {
 	return null
   }
 
+  const dateObj = date instanceof Date ? date : new Date(date)
+
   return (
 	<time dateTime={date.toISOString()}>
-		{prefix && <span class="date-prefix">{prefix}</span>}
+		{prefix && <span className="date-prefix">{prefix}</span>}
       		{formatDate(date, locale)}
 	</time>
     )
