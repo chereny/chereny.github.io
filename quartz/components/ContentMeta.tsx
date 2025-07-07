@@ -31,18 +31,21 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
       const created = fileData.frontmatter?.created
       const modified = fileData.frontmatter?.modified
       
-      if (created) {
-  	const createdDate = getDate(cfg, fileData) // getDate 함수 사용
-  	if (createdDate) {
-   	 dateSegments.push(<Date date={createdDate} locale={cfg.locale} prefix="Created: " />)
-  	}
+      // 날짜 정보 부분을 이렇게 바꾸세요
+     if (created) {
+  	dateSegments.push(
+    	<span class="date-created">
+      	    Created: {new Date(created).toLocaleDateString('ko-KR')}
+    	</span>
+  	)
       }
 
-      if (modified && modified !== created) {
-  	const modifiedDate = fileData.dates?.modified
-  	if (modifiedDate) {
-    	  dateSegments.push(<Date date={modifiedDate} locale={cfg.locale} prefix="Updated: " />)
-  	}
+     if (modified && modified !== created) {
+ 	dateSegments.push(
+    	   <span class="date-modified">
+      		Updated: {new Date(modified).toLocaleDateString('ko-KR')}
+    	   </span>
+  	 )
       }
              
       // 읽기 시간
