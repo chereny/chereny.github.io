@@ -18,6 +18,7 @@
    GitHub Actions로 바꾼다.
 
 ### 그 외 설치
+모두 default로 내려받으면 된다.
 1. **[옵시디언 링크](https://obsidian.md/download)**
 2. **[Git 링크](https://git-scm.com/)**
 3. **[Node.js 링크](https://nodejs.org/en)**
@@ -54,7 +55,7 @@
 	notepad content\index.md
 	 ```
     이 코드를 치면 메모장이 뜨는데 여기에 있는 글들을 지우고 
-    ![[Pasted image 20250706133341.png]]
+    Pasted image 20250706133341.png]![[]
     
 	 이런 식으로 글을 넣으면 된다. Ctrl S 눌러서 저장하는 것을 잊지 말자.
 
