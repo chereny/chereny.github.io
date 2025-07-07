@@ -77,7 +77,10 @@ tags:
    # GitHub에 푸시
    git push origin v4
    ```
-
+	이 과정을 한번에 해주는 코드를 사용해도 된다.
+	```
+	npx quartz sync
+	```
 
 5.   사용자 정보 입력
 	사실 위의 과정만 했다면 제대로 되지 않았을 것이다. 
@@ -609,5 +612,5 @@ export {
        기존 vault와 이름과 위치를 똑같게 하고 복제해둔 파일을 다시 옮기면 된다.
 2. 색상이나 디자인을 좀 더 내 취향대로 바꾸고자 한다.
    - 25.07.07 변경
-	   - 색상, date(created, updated 구분), tag
-	   - 조회수(Google Analytics 연동만) 설정 
+	   - 색상 변경, date(created, updated 구분), tag 속성 보이게 설정
+	   - 조회수(Google Analytics 연동), SEO(Google Search Console) 설정 
