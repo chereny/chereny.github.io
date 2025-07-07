@@ -32,13 +32,19 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
       const modified = fileData.frontmatter?.modified
       
       if (created) {
-        dateSegments.push(<Date date={new Date(created)} locale={cfg.locale} prefix="Created: " />)
+  	const createdDate = getDate(cfg, fileData) // getDate 함수 사용
+  	if (createdDate) {
+   	 dateSegments.push(<Date date={createdDate} locale={cfg.locale} prefix="Created: " />)
+  	}
       }
-      
+
       if (modified && modified !== created) {
-        dateSegments.push(<Date date={new Date(modified)} locale={cfg.locale} prefix="Updated: " />)
+  	const modifiedDate = fileData.dates?.modified
+  	if (modifiedDate) {
+    	  dateSegments.push(<Date date={modifiedDate} locale={cfg.locale} prefix="Updated: " />)
+  	}
       }
-      
+             
       // 읽기 시간
       if (options.showReadingTime) {
         const { minutes } = readingTime(text)
@@ -81,7 +87,7 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
               {metaSegments.map((segment, index) => (
                 <>
                   {segment}
-                  {index < metaSegments.length - 1 && <span class="dot">•</span>}
+                  {index < metaSegments.length - 1 && <span class="dot"> • </span>}
                 </>
               ))}
             </div>

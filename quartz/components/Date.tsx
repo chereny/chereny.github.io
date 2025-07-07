@@ -28,36 +28,16 @@ export function formatDate(d: Date, locale: ValidLocale = "en-US"): string {
 }
 
 export function Date({ date, locale, prefix }: Props) {
-  // console.log 제거 (배포 시 불필요)
+  if (!date) return null
   
-  if (!date) {
-    return null
-  }
+  // 아주 간단한 처리
+  const dateStr = date instanceof Date ? date.toISOString() : String(date)
+  const dateObj = new Date(dateStr)
   
-  // 간단하고 안전한 처리
-  let dateObj: Date
-  
-  try {
-    if (typeof date === 'string') {
-      dateObj = new Date(date)
-    } else if (date instanceof Date) {
-      dateObj = date
-    } else {
-      // 다른 형태면 문자열로 변환 후 Date 생성
-      dateObj = new Date(String(date))
-    }
-    
-    // 유효한 날짜인지만 간단히 확인
-    if (isNaN(dateObj.getTime())) {
-      return null
-    }
-    
-  } catch {
-    return null
-  }
+  if (isNaN(dateObj.getTime())) return null
   
   return (
-    <time dateTime={dateObj.toISOString()}>
+    <time>
       {prefix && <span className="date-prefix">{prefix}</span>}
       {formatDate(dateObj, locale)}
     </time>
