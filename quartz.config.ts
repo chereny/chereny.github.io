@@ -17,7 +17,7 @@ const config: QuartzConfig = {
       tagId: "G-DEQ2RMQF4W"
     },
     locale: "ko-KR",
-    baseUrl: "quartz.jzhao.xyz",
+    baseUrl: "chereny.github.io",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "created",
     theme: {
