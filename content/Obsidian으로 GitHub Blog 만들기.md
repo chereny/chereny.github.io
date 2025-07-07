@@ -331,270 +331,271 @@ tags:
 	}
 	```
 
-이건 **quartz.config.ts** 파일이다.
-``` 
-import { QuartzConfig } from "./quartz/cfg"
-import * as Plugin from "./quartz/plugins"
+	이건 **quartz.config.ts** 파일이다.
+	``` 
+	import { QuartzConfig } from "./quartz/cfg"
+	import * as Plugin from "./quartz/plugins"
+	
+	/**
+	 * Quartz 4 Configuration
+	 *
+	 * See https://quartz.jzhao.xyz/configuration for more information.
+	 */
+	const config: QuartzConfig = {
+	  configuration: {
+	    pageTitle: "Chereny's Tech Blog",
+	    pageTitleSuffix: " | Chereny",
+	    enableSPA: true,
+	    enablePopovers: true,
+	    analytics: {
+	      provider: "plausible",
+	    },
+	    locale: "ko-KR",
+	    baseUrl: "quartz.jzhao.xyz",
+	    ignorePatterns: ["private", "templates", ".obsidian"],
+	    defaultDateType: "modified",
+	    theme: {
+	      fontOrigin: "googleFonts",
+	      cdnCaching: true,
+	      typography: {
+	        header: "Schibsted Grotesk",
+	        body: "Source Sans Pro",
+	        code: "IBM Plex Mono",
+	      },
+	      colors: {
+	        lightMode: {
+	          light: "#faf8f8",
+	          lightgray: "#e5e5e5",
+	          gray: "#b8b8b8",
+	          darkgray: "#4e4e4e",
+	          dark: "#2b2b2b",
+	          secondary: "#284b63",
+	          tertiary: "#84a59d",
+	          highlight: "rgba(143, 159, 169, 0.15)",
+	          textHighlight: "#fff23688",
+	        },
+	        darkMode: {
+	          light: "#161618",
+	          lightgray: "#393639",
+	          gray: "#646464",
+	          darkgray: "#d4d4d4",
+	          dark: "#ebebec",
+	          secondary: "#7b97aa",
+	          tertiary: "#84a59d",
+	          highlight: "rgba(143, 159, 169, 0.15)",
+	          textHighlight: "#b3aa0288",
+	        },
+	      },
+	    },
+	  },
+	  plugins: {
+	    transformers: [
+	      Plugin.FrontMatter(),
+	      Plugin.CreatedModifiedDate({
+	        priority: ["frontmatter", "git", "filesystem"],
+	      }),
+	      Plugin.SyntaxHighlighting({
+	        theme: {
+	          light: "github-light",
+	          dark: "github-dark",
+	        },
+	        keepBackground: false,
+	      }),
+	      Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
+	      Plugin.GitHubFlavoredMarkdown(),
+	      Plugin.TableOfContents(),
+	      Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
+	      Plugin.Description(),
+	      Plugin.Latex({ renderEngine: "katex" }),
+	    ],
+	    filters: [Plugin.RemoveDrafts()],
+	    emitters: [
+	      Plugin.AliasRedirects(),
+	      Plugin.ComponentResources(),
+	      Plugin.ContentPage(),
+	      Plugin.FolderPage(),
+	      Plugin.TagPage(),
+	      Plugin.ContentIndex({
+	        enableSiteMap: true,
+	        enableRSS: true,
+	      }),
+	      Plugin.Assets(),
+	      Plugin.Static(),
+	      Plugin.Favicon(),
+	      Plugin.NotFoundPage(),
+	      // Comment out CustomOgImages to speed up build time
+	      Plugin.CustomOgImages(),
+	    ],
+	  },
+	}
+	
+	export default config
+	``` 
 
-/**
- * Quartz 4 Configuration
- *
- * See https://quartz.jzhao.xyz/configuration for more information.
- */
-const config: QuartzConfig = {
-  configuration: {
-    pageTitle: "Chereny's Tech Blog",
-    pageTitleSuffix: " | Chereny",
-    enableSPA: true,
-    enablePopovers: true,
-    analytics: {
-      provider: "plausible",
-    },
-    locale: "ko-KR",
-    baseUrl: "quartz.jzhao.xyz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
-    defaultDateType: "modified",
-    theme: {
-      fontOrigin: "googleFonts",
-      cdnCaching: true,
-      typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono",
-      },
-      colors: {
-        lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
-        },
-        darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
-        },
-      },
-    },
-  },
-  plugins: {
-    transformers: [
-      Plugin.FrontMatter(),
-      Plugin.CreatedModifiedDate({
-        priority: ["frontmatter", "git", "filesystem"],
-      }),
-      Plugin.SyntaxHighlighting({
-        theme: {
-          light: "github-light",
-          dark: "github-dark",
-        },
-        keepBackground: false,
-      }),
-      Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
-      Plugin.GitHubFlavoredMarkdown(),
-      Plugin.TableOfContents(),
-      Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
-      Plugin.Description(),
-      Plugin.Latex({ renderEngine: "katex" }),
-    ],
-    filters: [Plugin.RemoveDrafts()],
-    emitters: [
-      Plugin.AliasRedirects(),
-      Plugin.ComponentResources(),
-      Plugin.ContentPage(),
-      Plugin.FolderPage(),
-      Plugin.TagPage(),
-      Plugin.ContentIndex({
-        enableSiteMap: true,
-        enableRSS: true,
-      }),
-      Plugin.Assets(),
-      Plugin.Static(),
-      Plugin.Favicon(),
-      Plugin.NotFoundPage(),
-      // Comment out CustomOgImages to speed up build time
-      Plugin.CustomOgImages(),
-    ],
-  },
-}
+	이건 **Comments.tsx**
+	```
+	import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
+	import { classNames } from "../util/lang"
+	// @ts-ignore
+	import script from "./scripts/comments.inline"
+	
+	type Options = {
+	  provider: "giscus"
+	  options: {
+	    repo: `${string}/${string}`
+	    repoId: string
+	    category: string
+	    categoryId: string
+	    themeUrl?: string
+	    lightTheme?: string
+	    darkTheme?: string
+	    mapping?: "url" | "title" | "og:title" | "specific" | "number" | "pathname"
+	    strict?: boolean
+	    reactionsEnabled?: boolean
+	    inputPosition?: "top" | "bottom"
+	    lang?: string
+	  }
+	}
+	
+	function boolToStringBool(b: boolean): string {
+	  return b ? "1" : "0"
+	}
+	
+	export default ((opts: Options) => {
+	  const Comments: QuartzComponent = ({ displayClass, fileData, cfg }: QuartzComponentProps) => {
+	    // check if comments should be displayed according to frontmatter
+	    const disableComment: boolean =
+	      typeof fileData.frontmatter?.comments !== "undefined" &&
+	      (!fileData.frontmatter?.comments || fileData.frontmatter?.comments === "false")
+	    if (disableComment) {
+	      return <></>
+	    }
+	    return (
+	      <div
+	        class={classNames(displayClass, "giscus")}
+	        data-repo={opts.options.repo}
+	        data-repo-id={opts.options.repoId}
+	        data-category={opts.options.category}
+	        data-category-id={opts.options.categoryId}
+	        data-mapping={opts.options.mapping ?? "url"}
+	        data-strict={boolToStringBool(opts.options.strict ?? true)}
+	        data-reactions-enabled={boolToStringBool(opts.options.reactionsEnabled ?? true)}
+	        data-input-position={opts.options.inputPosition ?? "bottom"}
+	        data-light-theme={opts.options.lightTheme ?? "light"}
+	        data-dark-theme={opts.options.darkTheme ?? "dark"}
+	        data-theme-url={
+	          opts.options.themeUrl ?? `https://${cfg.baseUrl ?? "example.com"}/static/giscus`
+	        }
+	        data-lang={opts.options.lang ?? "en"}
+      >	</div>
+	    )
+	  }
+	  Comments.afterDOMLoaded = script
+	  return Comments
+	}) satisfies QuartzComponentConstructor<Options>
+	```
 
-export default config
-``` 
-
-이건 **Comments.tsx**
+	마지막으로 **index.ts**
 ```
-import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import { classNames } from "../util/lang"
-// @ts-ignore
-import script from "./scripts/comments.inline"
-
-type Options = {
-  provider: "giscus"
-  options: {
-    repo: `${string}/${string}`
-    repoId: string
-    category: string
-    categoryId: string
-    themeUrl?: string
-    lightTheme?: string
-    darkTheme?: string
-    mapping?: "url" | "title" | "og:title" | "specific" | "number" | "pathname"
-    strict?: boolean
-    reactionsEnabled?: boolean
-    inputPosition?: "top" | "bottom"
-    lang?: string
-  }
-}
-
-function boolToStringBool(b: boolean): string {
-  return b ? "1" : "0"
-}
-
-export default ((opts: Options) => {
-  const Comments: QuartzComponent = ({ displayClass, fileData, cfg }: QuartzComponentProps) => {
-    // check if comments should be displayed according to frontmatter
-    const disableComment: boolean =
-      typeof fileData.frontmatter?.comments !== "undefined" &&
-      (!fileData.frontmatter?.comments || fileData.frontmatter?.comments === "false")
-    if (disableComment) {
-      return <></>
-    }
-    return (
-      <div
-        class={classNames(displayClass, "giscus")}
-        data-repo={opts.options.repo}
-        data-repo-id={opts.options.repoId}
-        data-category={opts.options.category}
-        data-category-id={opts.options.categoryId}
-        data-mapping={opts.options.mapping ?? "url"}
-        data-strict={boolToStringBool(opts.options.strict ?? true)}
-        data-reactions-enabled={boolToStringBool(opts.options.reactionsEnabled ?? true)}
-        data-input-position={opts.options.inputPosition ?? "bottom"}
-        data-light-theme={opts.options.lightTheme ?? "light"}
-        data-dark-theme={opts.options.darkTheme ?? "dark"}
-        data-theme-url={
-          opts.options.themeUrl ?? `https://${cfg.baseUrl ?? "example.com"}/static/giscus`
-        }
-        data-lang={opts.options.lang ?? "en"}
-      ></div>
-    )
-  }
-  Comments.afterDOMLoaded = script
-  return Comments
-}) satisfies QuartzComponentConstructor<Options>
+	import { QuartzComponent } from "./types"
+	
+	// @ts-ignore
+	import ArticleTitle from "./ArticleTitle"
+	// @ts-ignore
+	import Backlinks from "./Backlinks"
+	// @ts-ignore
+	import Body from "./Body"
+	// @ts-ignore
+	import Breadcrumbs from "./Breadcrumbs"
+	// @ts-ignore
+	import Comments from "./Comments"
+	// @ts-ignore
+	import ConditionalRender from "./ConditionalRender"
+	// @ts-ignore
+	import ContentMeta from "./ContentMeta"
+	// @ts-ignore
+	import Darkmode from "./Darkmode"
+	// @ts-ignore
+	import Date from "./Date"
+	// @ts-ignore
+	import DesktopOnly from "./DesktopOnly"
+	// @ts-ignore
+	import Explorer from "./Explorer"
+	// @ts-ignore
+	import Flex from "./Flex"
+	// @ts-ignore
+	import Footer from "./Footer"
+	// @ts-ignore
+	import Graph from "./Graph"
+	// @ts-ignore
+	import Head from "./Head"
+	// @ts-ignore
+	import Header from "./Header"
+	// @ts-ignore
+	import MobileOnly from "./MobileOnly"
+	// @ts-ignore
+	import OverflowList from "./OverflowList"
+	// @ts-ignore
+	import PageList from "./PageList"
+	// @ts-ignore
+	import PageTitle from "./PageTitle"
+	// @ts-ignore
+	import ReaderMode from "./ReaderMode"
+	// @ts-ignore
+	import RecentNotes from "./RecentNotes"
+	// @ts-ignore
+	import Search from "./Search"
+	// @ts-ignore
+	import Spacer from "./Spacer"
+	// @ts-ignore
+	import TableOfContents from "./TableOfContents"
+	// @ts-ignore
+	import TagList from "./TagList"
+	
+	// Page components from pages/ folder
+	// @ts-ignore
+	import Content from "./pages/Content"
+	// @ts-ignore
+	import FolderContent from "./pages/FolderContent"
+	// @ts-ignore
+	import NotFound from "./pages/404"
+	// @ts-ignore
+	import TagContent from "./pages/TagContent"
+	
+	export {
+	  ArticleTitle,
+	  Backlinks,
+	  Body,
+	  Breadcrumbs,
+	  Comments,
+	  ConditionalRender,
+	  Content,
+	  ContentMeta,
+	  Darkmode,
+	  Date,
+	  DesktopOnly,
+	  Explorer,
+	  Flex,
+	  FolderContent,
+	  Footer,
+	  Graph,
+	  Head,
+	  Header,
+	  MobileOnly,
+	  NotFound,
+	  OverflowList,
+	  PageList,
+	  PageTitle,
+	  ReaderMode,
+	  RecentNotes,
+	  Search,
+	  Spacer,
+	  TableOfContents,
+	  TagContent,
+	  TagList,
+	}
 ```
 
-마지막으로 **index.ts**
-```
-import { QuartzComponent } from "./types"
-
-// @ts-ignore
-import ArticleTitle from "./ArticleTitle"
-// @ts-ignore
-import Backlinks from "./Backlinks"
-// @ts-ignore
-import Body from "./Body"
-// @ts-ignore
-import Breadcrumbs from "./Breadcrumbs"
-// @ts-ignore
-import Comments from "./Comments"
-// @ts-ignore
-import ConditionalRender from "./ConditionalRender"
-// @ts-ignore
-import ContentMeta from "./ContentMeta"
-// @ts-ignore
-import Darkmode from "./Darkmode"
-// @ts-ignore
-import Date from "./Date"
-// @ts-ignore
-import DesktopOnly from "./DesktopOnly"
-// @ts-ignore
-import Explorer from "./Explorer"
-// @ts-ignore
-import Flex from "./Flex"
-// @ts-ignore
-import Footer from "./Footer"
-// @ts-ignore
-import Graph from "./Graph"
-// @ts-ignore
-import Head from "./Head"
-// @ts-ignore
-import Header from "./Header"
-// @ts-ignore
-import MobileOnly from "./MobileOnly"
-// @ts-ignore
-import OverflowList from "./OverflowList"
-// @ts-ignore
-import PageList from "./PageList"
-// @ts-ignore
-import PageTitle from "./PageTitle"
-// @ts-ignore
-import ReaderMode from "./ReaderMode"
-// @ts-ignore
-import RecentNotes from "./RecentNotes"
-// @ts-ignore
-import Search from "./Search"
-// @ts-ignore
-import Spacer from "./Spacer"
-// @ts-ignore
-import TableOfContents from "./TableOfContents"
-// @ts-ignore
-import TagList from "./TagList"
-
-// Page components from pages/ folder
-// @ts-ignore
-import Content from "./pages/Content"
-// @ts-ignore
-import FolderContent from "./pages/FolderContent"
-// @ts-ignore
-import NotFound from "./pages/404"
-// @ts-ignore
-import TagContent from "./pages/TagContent"
-
-export {
-  ArticleTitle,
-  Backlinks,
-  Body,
-  Breadcrumbs,
-  Comments,
-  ConditionalRender,
-  Content,
-  ContentMeta,
-  Darkmode,
-  Date,
-  DesktopOnly,
-  Explorer,
-  Flex,
-  FolderContent,
-  Footer,
-  Graph,
-  Head,
-  Header,
-  MobileOnly,
-  NotFound,
-  OverflowList,
-  PageList,
-  PageTitle,
-  ReaderMode,
-  RecentNotes,
-  Search,
-  Spacer,
-  TableOfContents,
-  TagContent,
-  TagList,
-}
-```
 
 ![[Pasted image 20250706225526.png]]
 이렇게 최종적으로 잘 된 것을 확인할 수 있다.
@@ -607,9 +608,10 @@ export {
 ### 앞으로의 계획
 1. 옵시디언 Sync 기능을 이용해 다른 기기에서도 블로그를 올릴 수 있는 방법을 찾아보고자 한다. 
     $\rightarrow$  완료!(25.07.07) vault 이름을 기존 vault랑 다르게 해서 살짝 헤맸다.
-    > [!tip] 팁
+    > [!tip] 팁'
     > 나처럼 뒤늦게 동기화 하는 분들은 기존 vault 폴더를 다른 곳에 복제해두고
        기존 vault와 이름과 위치를 똑같게 하고 복제해둔 파일을 다시 옮기면 된다.
+
 2. 색상이나 디자인을 좀 더 내 취향대로 바꾸고자 한다.
    - 25.07.07 변경
 	   - 색상 변경, date(created, updated 구분), tag 속성 보이게 설정
