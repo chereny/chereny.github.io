@@ -4,8 +4,8 @@ modified: 2025-07-07
 tags:
   - GitHub
   - Obsidian
+  - Quartz
 ---
-
 
 # 1. 기본 세팅
 
@@ -608,4 +608,6 @@ export {
     > 나처럼 뒤늦게 동기화 하는 분들은 기존 vault 폴더를 다른 곳에 복제해두고
        기존 vault와 이름과 위치를 똑같게 하고 복제해둔 파일을 다시 옮기면 된다.
 2. 색상이나 디자인을 좀 더 내 취향대로 바꾸고자 한다.
-   - 색상+date(created, updated 구분)+tag+조회수 설정 완료(25.07.07)
+   - 25.07.07 변경
+	   - 색상, date(created, updated 구분), tag
+	   - 조회수(Google Analytics 연동만) 설정 
