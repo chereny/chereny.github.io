@@ -3,7 +3,7 @@ import { ValidLocale } from "../i18n"
 import { QuartzPluginData } from "../plugins/vfile"
 
 interface Props {
-  date: Date | string | undefined
+  date: any  // 아무 타입이나 받음
   locale?: ValidLocale
   prefix?: string
 }
@@ -28,18 +28,25 @@ export function formatDate(d: Date, locale: ValidLocale = "en-US"): string {
 }
 
 export function Date({ date, locale, prefix }: Props) {
+  // 무조건 안전하게 처리
   if (!date) return null
   
-  // 아주 간단한 처리
-  const dateStr = date instanceof Date ? date.toISOString() : String(date)
-  const dateObj = new Date(dateStr)
-  
-  if (isNaN(dateObj.getTime())) return null
-  
-  return (
-    <time>
-      {prefix && <span className="date-prefix">{prefix}</span>}
-      {formatDate(dateObj, locale)}
-    </time>
-  )
+  try {
+    const dateStr = String(date)
+    const dateObj = new Date(dateStr)
+    
+    // 간단한 유효성 검사
+    if (dateStr === 'Invalid Date' || !dateStr || dateStr === 'undefined') {
+      return null
+    }
+    
+    return (
+      <time>
+        {prefix && <span className="date-prefix">{prefix}</span>}
+        {dateObj.toLocaleDateString(locale || 'ko-KR')}
+      </time>
+    )
+  } catch {
+    return null
+  }
 }
