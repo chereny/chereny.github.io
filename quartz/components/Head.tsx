@@ -52,7 +52,7 @@ export default (() => {
         )}
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+	<meta name="google-site-verification" content="ibg6TEr5qt1hqYYKa6ahzvi4-vf8WzC2SZOKgSlP3MY" />
         <meta name="og:site_name" content={cfg.pageTitle}></meta>
         <meta property="og:title" content={title} />
         <meta property="og:type" content="website" />
