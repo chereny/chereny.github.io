@@ -28,8 +28,12 @@ export function formatDate(d: Date, locale: ValidLocale = "en-US"): string {
 }
 
 export function Date({ date, locale, prefix }: Props) {
+  if (!date) {
+	return null
+  }
+
   return (
-	<time datetime={date.toISOString()}>
+	<time dateTime={date.toISOString()}>
 		{prefix && <span class="date-prefix">{prefix}</span>}
       		{formatDate(date, locale)}
 	</time>
