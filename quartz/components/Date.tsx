@@ -27,10 +27,11 @@ export function formatDate(d: Date, locale: ValidLocale = "en-US"): string {
   })
 }
 
-export function Date({ date, locale }: Props) {
+export function Date({ date, locale, prefix }: Props) {
   return (
 	<time datetime={date.toISOString()}>
 		{prefix && <span class="date-prefix">{prefix}</span>}
       		{formatDate(date, locale)}
 	</time>
+    )
 }
