@@ -28,16 +28,36 @@ export function formatDate(d: Date, locale: ValidLocale = "en-US"): string {
 }
 
 export function Date({ date, locale, prefix }: Props) {
+  // 디버깅: 어떤 값이 들어오는지 확인
+  console.log("Date component received:", date, typeof date)
+  
   if (!date) {
-	return null
+    return null
   }
-
-  const dateObj = date instanceof Date ? date : new Date(date)
-
-  return (
-	<time dateTime={dateObj.toISOString()}>
-		{prefix && <span className="date-prefix">{prefix}</span>}
-      		{formatDate(dateObj, locale)}
-	</time>
+  
+  try {
+    let dateObj: Date
+    
+    if (date instanceof Date) {
+      dateObj = date
+    } else {
+      dateObj = new Date(date)
+    }
+    
+    // Date 객체 유효성 재확인
+    if (!dateObj || isNaN(dateObj.getTime())) {
+      console.log("Invalid date object:", dateObj)
+      return null
+    }
+    
+    return (
+      <time dateTime={dateObj.toISOString()}>
+        {prefix && <span className="date-prefix">{prefix}</span>}
+        {formatDate(dateObj, locale)}
+      </time>
     )
+  } catch (error) {
+    console.log("Date conversion error:", error)
+    return null
+  }
 }
