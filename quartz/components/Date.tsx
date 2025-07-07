@@ -35,9 +35,9 @@ export function Date({ date, locale, prefix }: Props) {
   const dateObj = date instanceof Date ? date : new Date(date)
 
   return (
-	<time dateTime={date.toISOString()}>
+	<time dateTime={dateObj.toISOString()}>
 		{prefix && <span className="date-prefix">{prefix}</span>}
-      		{formatDate(date, locale)}
+      		{formatDate(dateObj, locale)}
 	</time>
     )
 }
