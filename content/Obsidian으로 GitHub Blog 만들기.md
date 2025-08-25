@@ -616,3 +616,4 @@ tags:
    - 25.07.07 변경
 	   - 색상 변경, date(created, updated 구분), tag 속성 보이게 설정
 	   - 조회수(Google Analytics 연동), SEO(Google Search Console) 설정 
+	- github링크, 링크드인 링크 연결되게 아이콘 만들기
