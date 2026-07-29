@@ -1,4 +1,5 @@
 ---
+publish: true
 created: 2025-07-06
 modified: 2025-07-07
 tags:
@@ -34,7 +35,7 @@ tags:
 ### 깃헙
 1. **clone**
    앞으로의 코드는 cmd에서 다 이루어진다. 
-    ```
+   ```
    git clone https://github.com/username/저장소이름.git 
    cd 저장소이름
    ```
@@ -47,23 +48,23 @@ tags:
    
    # Quartz 초기 설정 진행
    npx quartz create
-	``` 
-	마지막 코드에서 질문이 나오는데 그냥 엔터쳐서 바로 넘어가면 된다.
-	- **"Choose how to initialize the content in your new vault"** → "Empty Quartz"
-	- **"Choose how you'd like to set this up"** → "Treat links as shortest path"
+   ``` 
+   마지막 코드에서 질문이 나오는데 그냥 엔터쳐서 바로 넘어가면 된다.
+   - **"Choose how to initialize the content in your new vault"** → "Empty Quartz"
+   - **"Choose how you'd like to set this up"** → "Treat links as shortest path"
 
 
 3.  블로그 생성
-	 ``` 
+   ``` 
 	# content 폴더 확인
 	dir content
 	   
 	# 첫 번째 노트 작성
 	notepad content\index.md
-	 ```
-    이 코드를 치면 메모장이 뜨는데 여기에 있는 글들을 지우고 ![[Pasted image 20250706133341.png]]
+   ```
+   이 코드를 치면 메모장이 뜨는데 여기에 있는 글들을 지우고 ![[Pasted image 20250706133341.png]]
     
-	 이런 식으로 글을 넣으면 된다. Ctrl S 눌러서 저장하는 것을 잊지 말자.
+   이런 식으로 글을 넣으면 된다. Ctrl S 눌러서 저장하는 것을 잊지 말자.
 
 	
 4. 저장한 내용 반영하기
@@ -77,19 +78,19 @@ tags:
    # GitHub에 푸시
    git push origin v4
    ```
-	이 과정을 한번에 해주는 코드를 사용해도 된다.
-	```
+   이 과정을 한번에 해주는 코드를 사용해도 된다.
+   ```
 	npx quartz sync
-	```
+   ```
 
 5.   사용자 정보 입력
-	사실 위의 과정만 했다면 제대로 되지 않았을 것이다. 
-	이름과 이메일을 입력해두지 않았다면 제대로 실행되지 못하기 때문에 아래의 코드를 입력해준다. 
-	참고로 4번의 내용은 변경사항이 있을 때마다 사용해야하니 기억해두도록 하자.
-	```
+   사실 위의 과정만 했다면 제대로 되지 않았을 것이다. 
+   이름과 이메일을 입력해두지 않았다면 제대로 실행되지 못하기 때문에 아래의 코드를 입력해준다. 
+   참고로 4번의 내용은 변경사항이 있을 때마다 사용해야하니 기억해두도록 하자.
+   ```
 	git config --global user.name "여기에 이름 넣기"
 	git config --global user.email "여기에 이메일 넣기"
-	```
+   ```
 
 
 6. workflows 생성
@@ -101,10 +102,10 @@ tags:
     mkdir .github
     mkdir .github\workflows
 	notepad .github\workflows\deploy.yml
-	```
-	생성된 메모장에는 다음 내용을 넣도록 한다.
+   ```
+   생성된 메모장에는 다음 내용을 넣도록 한다.
 	
-	```
+   ```
 	name: Deploy Quartz site to GitHub Pages
 	
 	on:
@@ -150,46 +151,50 @@ tags:
 		      - name: Deploy to GitHub Pages
 		        id: deployment
 		        uses: actions/deploy-pages@v4
-	```
-	이제 다시 4번을 해보자.
+   ```
+
+
+   이제 다시 4번을 해보자.
 	
-	![[Pasted image 20250706215741.png]]
-	이전에는 빨간색 X 표시가 뜨며 실패하거나 스킵을 의미하는 회색 사선 아이콘이 떴는데 이제 초록색 체크가 뜨면서 성공적으로 배포했다.
+   ![[Pasted image 20250706215741.png]]
 	
-	![[Pasted image 20250706232945.png]]
-	설정의 Pages에도 이전에 없던 링크가 생긴 것을 확인할 수 있다.
+   이전에는 빨간색 X 표시가 뜨며 실패하거나 스킵을 의미하는 회색 사선 아이콘이 떴는데 이제 초록색 체크가 뜨면서 성공적으로 배포했다.
 	
-	![[Pasted image 20250706215641.png]]
-	홈화면이 이렇게 잘 뜬 것을 확인할 수 있다.
+   ![[Pasted image 20250706232945.png]]
+   설정의 Pages에도 이전에 없던 링크가 생긴 것을 확인할 수 있다.
+	
+   ![[Pasted image 20250706215641.png]]
+   홈화면이 이렇게 잘 뜬 것을 확인할 수 있다.
+
 
 ### 옵시디언
 1. 깃헙과 연동된 vault를 연다. 레포지토리 이름\content 폴더를 선택하면 된다. 
-	![[Pasted image 20250706221817.png]]
+   ![[Pasted image 20250706221817.png]]
 
 2. 옵시디언 플러그인을 설치한다.
    ![[Pasted image 20250704135436.png]]
    설정>커뮤니티 플러그인>탐색>Git 다운
    그 외 Dataview, Excalidraw 등 다양한 플러그인이 있는데 각자 필요에 맞게 내려받으면 된다.
-	 ![[Pasted image 20250704140057.png]]
-	 설치만 하면 되는 게 아니고 Enable을 해야한다.
-	 ![[Pasted image 20250704140418.png]]
-	 설정에서 10분마다 자동으로 Commit하게 할 수도 있다.
+   ![[Pasted image 20250704140057.png]]
+   설치만 하면 되는 게 아니고 Enable을 해야한다.
+   ![[Pasted image 20250704140418.png]]
+   설정에서 10분마다 자동으로 Commit하게 할 수도 있다.
 
 # 3. 댓글기능 추가
 추가적으로 댓글 기능도 도입할 수 있다. 
 1. **GitHub Discussions 활성화**
    Settings>General에서 "Discussion"에 체크한다.
-	![[Pasted image 20250706222652.png]]
-	Set up discussions까지 하면 된다.
+   ![[Pasted image 20250706222652.png]]
+   Set up discussions까지 하면 된다.
 
 2.  **Giscus 설정**
-	[giscus.app](https://giscus.app) 에 방문한다.
-	- 저장소: `chereny/chereny.github.io` 입력
-	- 페이지 ↔ discussions 매핑: "pathname" 선택
-	- Discussion 카테고리: "General" 선택
-	- 테마: "preferred_color_scheme"(원하는 대로) 선택
-	  쭉 선택하고 나면
-	 ```
+   [giscus.app](https://giscus.app) 에 방문한다.
+   - 저장소: `chereny/chereny.github.io` 입력
+   - 페이지 ↔ discussions 매핑: "pathname" 선택
+   - Discussion 카테고리: "General" 선택
+   - 테마: "preferred_color_scheme"(원하는 대로) 선택
+   쭉 선택하고 나면
+   ```
 	 <script src="https://giscus.app/client.js"
         data-repo="[ENTER REPO HERE]"
         data-repo-id="[ENTER REPO ID HERE]"
@@ -205,10 +210,10 @@ tags:
         crossorigin="anonymous"
         async>
 	</script>
-	```
-	이렇게 뜨는 코드를 notepad **quartz.layout.ts**로 열리는 메모장 파일에 넣어주면 된다. 
-	아래는 파일 안의 내용이다. 스크롤하면 목차부분 진해지는 기능과 폴더 접기 펴기 기능도 추가했다.
-	```
+   ```
+   이렇게 뜨는 코드를 notepad **quartz.layout.ts**로 열리는 메모장 파일에 넣어주면 된다. 
+   아래는 파일 안의 내용이다. 스크롤하면 목차부분 진해지는 기능과 폴더 접기 펴기 기능도 추가했다.
+   ```
 	import { PageLayout, SharedLayout } from "./quartz/cfg"
 	import * as Component from "./quartz/components"
 	
@@ -329,10 +334,10 @@ tags:
 	  ],
 	  right: [],
 	}
-	```
+   ```
 
-	이건 **quartz.config.ts** 파일이다.
-	``` 
+   이건 **quartz.config.ts** 파일이다.
+   ``` 
 	import { QuartzConfig } from "./quartz/cfg"
 	import * as Plugin from "./quartz/plugins"
 	
@@ -430,10 +435,10 @@ tags:
 	}
 	
 	export default config
-	``` 
+   ``` 
 
-	이건 **Comments.tsx**
-	```
+   이건 **Comments.tsx**
+   ```
 	import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 	import { classNames } from "../util/lang"
 	// @ts-ignore
@@ -493,9 +498,9 @@ tags:
 	  Comments.afterDOMLoaded = script
 	  return Comments
 	}) satisfies QuartzComponentConstructor<Options>
-	```
+   ```
 
-	마지막으로 **index.ts**
+   마지막으로 **index.ts**
 ```
 	import { QuartzComponent } from "./types"
 	
@@ -607,13 +612,13 @@ tags:
 
 ### 앞으로의 계획
 1. 옵시디언 Sync 기능을 이용해 다른 기기에서도 블로그를 올릴 수 있는 방법을 찾아보고자 한다. 
-    $\rightarrow$  완료!(25.07.07) vault 이름을 기존 vault랑 다르게 해서 살짝 헤맸다.
-    > [!tip] 팁'
-    > 나처럼 뒤늦게 동기화 하는 분들은 기존 vault 폴더를 다른 곳에 복제해두고
-       기존 vault와 이름과 위치를 똑같게 하고 복제해둔 파일을 다시 옮기면 된다.
+   $\rightarrow$  완료!(25.07.07) vault 이름을 기존 vault랑 다르게 해서 살짝 헤맸다.
+   > [!tip] 팁'
+   > 나처럼 뒤늦게 동기화 하는 분들은 기존 vault 폴더를 다른 곳에 복제해두고
+   기존 vault와 이름과 위치를 똑같게 하고 복제해둔 파일을 다시 옮기면 된다.
 
 2. 색상이나 디자인을 좀 더 내 취향대로 바꾸고자 한다.
    - 25.07.07 변경
-	   - 색상 변경, date(created, updated 구분), tag 속성 보이게 설정
-	   - 조회수(Google Analytics 연동), SEO(Google Search Console) 설정 
-	- github링크, 링크드인 링크 연결되게 아이콘 만들기
+   - 색상 변경, date(created, updated 구분), tag 속성 보이게 설정
+   - 조회수(Google Analytics 연동), SEO(Google Search Console) 설정 
+   - github링크, 링크드인 링크 연결되게 아이콘 만들기

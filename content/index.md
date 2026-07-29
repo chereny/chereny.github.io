@@ -1,11 +1,15 @@
 ---
-title: Welcome to Chereney's Tech Blog
+publish: true
+title: chereny
 ---
 
-# 안녕하세요!
-데이터시각화 디자이너를 꿈꾸는 최은희의 기술블로그입니다.
+이화여대에서 데이터사이언스를 공부합니다.
+배운 것과 만든 것을 정리해 둡니다.
 
-## 주요 주제
+## 글
 
-- DataScience
-- UX
+- [[Obsidian으로 GitHub Blog 만들기]]
+
+## 어디서 왔는지
+
+- [GitHub](https://github.com/chereny)
