@@ -21,10 +21,13 @@ $content = Join-Path $quartz 'content'
 
 if (-not (Test-Path -LiteralPath $blogDir)) { Write-Host "볼트 블로그 폴더 없음: $blogDir" -ForegroundColor Red; exit 1 }
 
-# --- 1. content 비우기 (.gitkeep 은 유지) ---
+# --- 1. content 비우기 ---
+# '.' 으로 시작하는 항목(.obsidian, .git, .gitkeep 등)은 건드리지 않는다.
+# content 를 Obsidian 볼트로 열어 쓰는 경우 .obsidian 이 날아가면 플러그인·설정이 사라짐.
+$removed = 0
 Get-ChildItem -LiteralPath $content -Force -EA SilentlyContinue |
-  Where-Object { $_.Name -ne '.gitkeep' } |
-  ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force }
+  Where-Object { -not $_.Name.StartsWith('.') } |
+  ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force; $removed++ }
 
 # --- 2. 글 복사 (private 폴더 제외) ---
 $notes = Get-ChildItem -LiteralPath $blogDir -Recurse -File -Force |
